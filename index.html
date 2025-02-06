@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Life Graphic T-Shirt | SHOP.CO</title>
+    <style>
+        /* Previous styles remain the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        nav {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-bar {
+            padding: 0.5rem 1rem;
+            width: 300px;
+            border: none;
+            border-radius: 20px;
+            background: #f5f5f5;
+        }
+
+        .breadcrumb {
+            padding: 1rem 2rem;
+            color: #666;
+        }
+
+        .breadcrumb span:not(:last-child)::after {
+            content: ">";
+            margin: 0 0.5rem;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .thumbnail.selected {
+            border-color: #000;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Rest of the previous styles */
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffd700;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .original-price {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background: #ffe4e4;
+            color: #ff4444;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .color-options, .size-options {
+            margin-bottom: 2rem;
+        }
+
+        .option-title {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .colors {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .color {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color.selected {
+            border-color: #000;
+            transform: scale(1.1);
+        }
+
+        .sizes {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .size {
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            background: #f5f5f5;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .size.selected {
+            background: #000;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .size:hover:not(.selected) {
+            background: #e5e5e5;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 1rem;
+            background: #f5f5f5;
+            border-radius: 20px;
+        }
+
+        .quantity-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <div class="logo">SHOP.CO</div>
+            <div class="nav-links">
+                <a href="#">Shop</a>
+                <a href="#">On Sale</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Brands</a>
+            </div>
+        </div>
+        <div class="search-cart">
+            <input type="text" class="search-bar" placeholder="Search for products...">
+            <img src="/api/placeholder/24/24" alt="User" />
+            <img src="/api/placeholder/24/24" alt="Cart" />
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <span>Home</span>
+        <span>Shop</span>
+        <span>Men</span>
+        <span>T-shirts</span>
+    </div>
+
+    <div class="product-container">
+        <div class="product-images">
+            <div class="main-image">
+                <img src="image/image_168.jpg" alt="One Life Graphic T-Shirt" id="mainImage">
+            </div>
+            <div class="thumbnail-container">
+                <div class="thumbnail selected" onclick="changeImage('image/image_169.jpg', this)">
+                    <img src="image/image_169.jpg" alt="T-shirt front view">
+                </div>
+                <div class="thumbnail" onclick="changeImage('image/image_170.jpg', this)">
+                    <img src="image/image_170.jpg" alt="T-shirt back view">
+                </div>
+                <div class="thumbnail" onclick="changeImage('image/image_171.jpg', this)">
+                    <img src="image/image_171.jpg" alt="T-shirt worn view">
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>ONE LIFE GRAPHIC T-SHIRT</h1>
+            
+            <div class="rating">
+                <div class="stars">★★★★☆</div>
+                <span>4.5/5</span>
+            </div>
+
+            <div class="price">
+                <span class="current-price">$260</span>
+                <span class="original-price">$300</span>
+                <span class="discount">-40%</span>
+            </div>
+
+            <p class="description">
+                This graphic t-shirt which is perfect for any occasion. Crafted from a soft and
+                breathable fabric, it offers superior comfort and style.
+            </p>
+
+            <div class="color-options">
+                <div class="option-title">Select Colors</div>
+                <div class="colors">
+                    <div class="color" style="background-color: #4B5320;" onclick="selectColor(this)"></div>
+                    <div class="color" style="background-color: #2F4F4F;" onclick="selectColor(this)"></div>
+                    <div class="color" style="background-color: #1B1B3A;" onclick="selectColor(this)"></div>
+                </div>
+            </div>
+
+            <div class="size-options">
+                <div class="option-title">Choose Size</div>
+                <div class="sizes">
+                    <button class="size" onclick="selectSize(this)">Small</button>
+                    <button class="size" onclick="selectSize(this)">Medium</button>
+                    <button class="size" onclick="selectSize(this)">Large</button>
+                    <button class="size" onclick="selectSize(this)">X-Large</button>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity(-1)">−</button>
+                    <span id="quantity">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                </div>
+            </div>
+
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(src, thumbnail) {
+            document.getElementById('mainImage').src = src;
+            // Remove selected class from all thumbnails
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('selected');
+            });
+            // Add selected class to clicked thumbnail
+            thumbnail.classList.add('selected');
+        }
+
+        function selectColor(element) {
+            // Remove selected class from all colors
+            document.querySelectorAll('.color').forEach(color => {
+                color.classList.remove('selected');
+            });
+            // Add selected class to clicked color
+            element.classList.add('selected');
+        }
+
+        function selectSize(element) {
+            // Remove selected class from all sizes
+            document.querySelectorAll('.size').forEach(size => {
+                size.classList.remove('selected');
+            });
+            // Add selected class to clicked size
+            element.classList.add('selected');
+        }
+
+        function updateQuantity(change) {
+            const quantityElement = document.getElementById('quantity');
+            let quantity = parseInt(quantityElement.textContent);
+            quantity = Math.max(1, quantity + change); // Ensure quantity doesn't go below 1
+            quantityElement.textContent = quantity;
+        }
+
+        // Initialize first options as selected
+        document.querySelector('.color').classList.add('selected');
+        document.querySelector('.size').classList.add('selected');
+    </script>
+</body>
+</html>
