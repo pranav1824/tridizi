@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Life Graphic T-Shirt | SHOP.CO</title>
     <style>
-        /* Previous styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -127,7 +126,6 @@
             object-fit: cover;
         }
 
-        /* Rest of the previous styles */
         .product-info h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -361,40 +359,33 @@
     <script>
         function changeImage(src, thumbnail) {
             document.getElementById('mainImage').src = src;
-            // Remove selected class from all thumbnails
             document.querySelectorAll('.thumbnail').forEach(thumb => {
                 thumb.classList.remove('selected');
             });
-            // Add selected class to clicked thumbnail
             thumbnail.classList.add('selected');
         }
 
         function selectColor(element) {
-            // Remove selected class from all colors
             document.querySelectorAll('.color').forEach(color => {
                 color.classList.remove('selected');
             });
-            // Add selected class to clicked color
             element.classList.add('selected');
         }
 
         function selectSize(element) {
-            // Remove selected class from all sizes
             document.querySelectorAll('.size').forEach(size => {
                 size.classList.remove('selected');
             });
-            // Add selected class to clicked size
             element.classList.add('selected');
         }
 
         function updateQuantity(change) {
             const quantityElement = document.getElementById('quantity');
             let quantity = parseInt(quantityElement.textContent);
-            quantity = Math.max(1, quantity + change); // Ensure quantity doesn't go below 1
+            quantity = Math.max(1, quantity + change);
             quantityElement.textContent = quantity;
         }
 
-        // Initialize first options as selected
         document.querySelector('.color').classList.add('selected');
         document.querySelector('.size').classList.add('selected');
     </script>
